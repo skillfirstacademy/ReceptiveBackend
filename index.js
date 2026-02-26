@@ -25,8 +25,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-// ✅ Serve static React build files
-app.use(express.static("dist"));
 
 app.use("/api/auth", authRoutes);
 app.use("/api/reviews", reviewRoute);
@@ -70,7 +68,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "*", // set your domain in production
+    origin: "*",
     methods: ["GET", "POST"],
   },
 });
